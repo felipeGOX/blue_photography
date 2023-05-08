@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
-@stack('modals')
-
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop

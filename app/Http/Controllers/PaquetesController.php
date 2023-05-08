@@ -10,7 +10,7 @@ class PaquetesController extends Controller
     public function index()
     {
         $Paquetes = Paquetes::all(); //saco todos los paquetes de la  tabla paquetes(base de datos)
-        return view('Paquetes.index', compact('Paquetes')); //retorno a la vista y envio una variable con todos los paquetes
+        return view('Paquetes.index_adminlte', compact('Paquetes')); //retorno a la vista y envio una variable con todos los paquetes
     }
     public function create()
     {
@@ -19,7 +19,7 @@ class PaquetesController extends Controller
 
     public function store(Request $request)
     {
-        
+
     }
     public function show($id)
     {
