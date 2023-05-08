@@ -10,6 +10,6 @@ class Fotografos extends Model
     use HasFactory;
     protected $fillable = 
     [
-    'razon social' 
+    'razon_social' 
     ];
 }
