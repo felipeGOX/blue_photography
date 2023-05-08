@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gestion_fotos', function (Blueprint $table) {
+        Schema::create('solicitudes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fotografia');
-            $table->foreign('id_fotografia')->references('id')->on('fotografias');
-            $table->unsignedBigInteger('id_cliente');
-            $table->foreign('id_cliente')->references('id')->on('clientes');
+            $table->string('estado');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gestion_fotos');
+        Schema::dropIfExists('solicitudes');
     }
 };

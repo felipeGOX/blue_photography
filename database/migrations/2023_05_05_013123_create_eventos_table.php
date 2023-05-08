@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_evento');
+            $table->string('nombre');
             $table->string('direccion');
             $table->date('fecha');
             $table->time('hora');
-            $table->string('estado')->nullable();
+            /* $ *//* table->string('estado')->nullable();
             $table->unsignedBigInteger('id_fotografo');
             $table->foreign('id_fotografo')->references('id')->on('fotografos');
             $table->unsignedBigInteger('id_organizador');
             $table->foreign('id_organizador')->references('id')->on('organizadores');
             $table->unsignedBigInteger('id_paquete')->nullable();
-            $table->foreign('id_paquete')->references('id')->on('paquetes');
+            $table->foreign('id_paquete')->references('id')->on('paquetes'); */
             $table->timestamps();
         });
     }

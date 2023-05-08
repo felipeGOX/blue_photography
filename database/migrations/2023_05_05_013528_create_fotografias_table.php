@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('direccion_img');
             $table->string('precio');
-            $table->string('tipo');
-            $table->unsignedBigInteger('id_catalogo');
-            $table->foreign('id_catalogo')->references('id')->on('catalogos');
+          //  $table->unsignedBigInteger('id_catalogo');
+          //  $table->foreign('id_catalogo')->references('id')->on('catalogos');
             $table->timestamps();
         });
     }

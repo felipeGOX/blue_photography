@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('organizadores', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->string('cod');
             $table->timestamps();
         });
     }

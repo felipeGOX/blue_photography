@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('precio');
-            $table->string('cantidad_fotos');
-            $table->string('descripcion');
-            $table->unsignedBigInteger('id_fotografo')->nullable();
-            $table->foreign('id_fotografo')->references('id')->on('fotografos');
+            $table->string('caracteristicas');
+       
+            // $table->unsignedBigInteger('id_fotografo')->nullable();
+            // $table->foreign('id_fotografo')->references('id')->on('fotografos');
             $table->timestamps();
         });
     }
