@@ -8,7 +8,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Registrar Proveedor</span>
+                        <span class="card-title">Registrar Paquete</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('paquetes.store') }}" role="form" enctype="multipart/form-data">
