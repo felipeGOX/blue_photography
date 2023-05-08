@@ -11,12 +11,9 @@ class Paquetes extends Model
     
     protected $fillable = 
     [
-    'id',  
     'nombre',
     'precio',
-    'cantidad_fotos',
-    'descripcion',
-    'id_fotografo'
+    'caracteristicas',
     ];
 
 }
