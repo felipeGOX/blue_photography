@@ -20,6 +20,9 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', function () {
+    return response()->redirectTo('/dashboard');
+});
 Route::get('/test', function () {
     return view('adminlte');
 });
