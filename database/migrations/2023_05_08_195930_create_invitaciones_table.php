@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fotografias', function (Blueprint $table) {
+        Schema::create('invitaciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('codigo')->unique();
             $table->text('descripcion')->nullable();
-            $table->float('precio', 8, 2);
-            $table->string('ruta');
-       
+            $table->timestamp('fecha')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fotografias');
+        Schema::dropIfExists('invitaciones');
     }
 };

@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('catalogos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_evento');
-            $table->foreign('id_evento')->references('id')->on('eventos');
+            $table->string('nombre');
+            $table->text('descripcion')->nullable();
+            $table->text('codigo');
+            $table->string('ruta');
+
+    
             $table->timestamps();
         });
     }   

@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('paquetes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('precio');
+            $table->float('precio', 8, 2);
             $table->string('caracteristicas');
-       
-            // $table->unsignedBigInteger('id_fotografo')->nullable();
-            // $table->foreign('id_fotografo')->references('id')->on('fotografos');
+  
             $table->timestamps();
         });
     }
