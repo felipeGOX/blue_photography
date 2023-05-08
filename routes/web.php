@@ -20,6 +20,9 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test', function () {
+    return view('adminlte');
+});
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
