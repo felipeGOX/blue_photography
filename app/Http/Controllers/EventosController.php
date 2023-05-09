@@ -11,11 +11,11 @@ class EventosController extends Controller
     public function index()
     {
         $Eventos = Eventos::all(); //saco todos los paquetes de la  tabla paquetes(base de datos)
-        return view('Paquetes.index_adminlte', compact('Eventos')); //retorno a la vista y envio una variable con todos los paquetes
+        return view('Evento.index', compact('Eventos')); //retorno a la vista y envio una variable con todos los paquetes
     }
     public function create()
     {
-        return view('Eventos.create');
+        return view('Evento.create');
     }
 
     public function store(Request $request)
