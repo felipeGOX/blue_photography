@@ -34,8 +34,13 @@
                             <div class="row">
                                 <x-adminlte-input name="hora" label="Hora" placeholder="HH:mm" value="{{$evento->hora}}" format="24hr" fgroup-class="col-md-6" disable-feedback disabled/>
                             </div>
-
-
+                            <div class="row">
+                                    <a class="btn btn btn-default btn-lg text-primary mx-2 " title="Volver"
+                                       href="{{url("evento")}}">
+                                        Volver
+                                    </a>
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </div>
                         </fieldset>
                     </form>
                 </div>
