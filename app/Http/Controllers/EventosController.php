@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\catalogos;
 use App\Models\Eventos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class EventosController extends Controller
 {
-    //
     public function index()
     {
-        $Eventos = Eventos::all(); //saco todos los paquetes de la  tabla paquetes(base de datos)
+        $Eventos = Eventos::all();
 
         $heads = [
             ['label' => 'Nombre', 'width' => 20],
@@ -32,21 +33,30 @@ class EventosController extends Controller
     {
         $evento = new Eventos($request->input());
         $evento->save();
-        return response()->redirectTo(url('evento'))->with('success', 'Nuevo evento creado!');
 
+        // Creacion de catalogo automaticamente luego de haberse creado el evento
+        $catalogo = new catalogos([
+            'nombre' => $evento->nombre,
+            'descripcion' => "Catalogo del evento $evento->nombre",
+            'codigo' => Str::orderedUuid() // generacion de codigo para el catalogo
+        ]);
+        $catalogo->save();
+
+        return response()->redirectTo(url('evento'))->with('success', 'Nuevo evento creado!');
     }
+
     public function show($id)
     {
         $evento = Eventos::find($id);
         return view('Eventos.show', compact('evento'));
     }
+
     public function edit($id)
     {
         $evento = Eventos::find($id);
         return view('Eventos.edit', compact('evento'));
     }
 
-    
     public function update(Request $request, $id)
     {
         $evento = Eventos::find($id);
@@ -66,5 +76,5 @@ class EventosController extends Controller
         $evento->delete();
         return response()->redirectTo(url('evento'))->with('success', "Evento \"$evento->nombre\" eliminado!");
     }
-   
+
 }
