@@ -1,9 +1,13 @@
 <?php
 
-use App\Models\Paquetes;
+use App\Http\Controllers\CatalogosController;
+use App\Http\Controllers\InvitacionController;
+use App\Http\Controllers\OrganizadoresController;
+use App\Http\Controllers\EventosController;
+use App\Http\Controllers\FotografosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaquetesController;
-use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\InvitadoController;
 
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
@@ -37,7 +41,13 @@ Route::middleware([
 });
 
 //aqui van todas las rutas de tus crud
-Route::resource('paquetes',PaquetesController::class);
-Route::resource('cliente', ClientesController::class);
+Route::resource('organizador', OrganizadoresController::class);
+Route::resource('evento',EventosController::class);
+Route::resource('catalogo', CatalogosController::class);
 
-//Route::resource('Paquetes',PaquetesController::class);
+Route::resource('fotografo',FotografosController::class);
+Route::resource('paquetes',PaquetesController::class);
+
+Route::resource('invitado', InvitadoController::class);
+Route::resource('invitacion', InvitacionController::class);
+
