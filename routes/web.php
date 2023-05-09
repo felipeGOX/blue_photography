@@ -4,6 +4,7 @@ use App\Models\Paquetes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaquetesController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\EventosController;
 
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
@@ -39,5 +40,6 @@ Route::middleware([
 //aqui van todas las rutas de tus crud
 Route::resource('paquetes',PaquetesController::class);
 Route::resource('cliente', ClientesController::class);
+Route::resource('Eventos',EventosController::class);
 
 //Route::resource('Paquetes',PaquetesController::class);

@@ -327,6 +327,11 @@ return [
                             'url'  => 'catalogo',
                             'icon' => 'far fa-fw fa-file',
                         ],
+                        [
+                            'text' => 'Evento',
+                            'url'  => 'Eventos',
+                            'icon' => 'far fa-fw fa-file',
+                        ],
                     ],
                 ],
                 [
