@@ -11,7 +11,7 @@
                     <span class="card-title">Registrar Evento</span>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('paquetes.store') }}" role="form" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('eventos.store') }}" role="form" enctype="multipart/form-data">
                         @csrf
                         <form>
                             <fieldset>

@@ -329,14 +329,14 @@ return [
                         ],
                         [
                             'text' => 'Evento',
-                            'url'  => 'Eventos',
+                            'url'  => 'evento',
                             'icon' => 'far fa-fw fa-file',
                         ],
                     ],
                 ],
                 [
                     'text' => 'Fotografos',
-                    'url'  => 'fotografos',
+                    'url'  => 'fotografo',
                     'icon' => 'far fa-fw fa-user',
                 ],
             ],
