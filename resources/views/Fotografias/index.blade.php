@@ -22,7 +22,7 @@
                                 <a href="{{ route('fotografia.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
-                            </div> 
+                        </div>
 
                         </div>
                     </div>
@@ -33,13 +33,23 @@
                     @endif
                     <div class="card-body">
                         <div class="table-responsive">
-                            <x-adminlte-datatable id="tabla_Fotografias" :heads="$heads" head-theme="dark" striped hoverable bordered compressed>
+                            <x-adminlte-datatable id="tabla_Fotografias" :heads="$heads" head-theme="dark" striped
+                                                  hoverable bordered compressed>
                                 @foreach($Fotografias as $Fotografia)
                                     <tr>
                                         <td>{{ $Fotografia->nombre }}</td>
-                                        <td>{{ $Fotografia->descripcion }}</td>
                                         <td>{{ $Fotografia->precio }}</td>
-                                        <td>{{ $Fotografia->ruta }}</td>
+                                        <td>
+                                            <div class="col-md-3">
+                                                <div class="card mb-3">
+                                                    <img src="{{ Storage::url($Fotografia->ruta) }}"
+                                                         alt="{{ $Fotografia->nombre }}" class="card-img-top"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{--                                        <td>{{ $Fotografia->descripcion }}</td>--}}
+                                        {{--                                        <td>{{ $Fotografia->ruta }}</td>--}}
                                         <td>
                                             <a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Ver"
                                                href="{{url("fotografia/$Fotografia->id")}}">

@@ -52,3 +52,7 @@ Route::middleware([
 });
 
 
+Route::controller(FotografiasController::class)->group(function () {
+    Route::post('images/upload', 'store');
+});
+

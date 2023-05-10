@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Fotografias;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class FotografiasController extends Controller
         $heads = [
             ['label' => 'Nombre', 'width' => 20],
             ['label' => 'Precio', 'width' => 10],
-            ['label' => 'Caracteristicas', 'width' => 40],
+            ['label' => 'Thumbnail', 'width' => 40],
             ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
         ];
 
@@ -22,13 +23,23 @@ class FotografiasController extends Controller
     }
     public function create()
     {
-        return view('Fotografias.create');
+        $images = [];
+        return view('Fotografias.create', compact('images'));
     }
 
     public function store(Request $request)
     {
-        $Fotografia = new Fotografias($request->input());
-        $Fotografia->save();
+        $fotos = $request->allFiles();
+        foreach ($fotos as $foto) {
+            foreach ($foto as $item) {
+//            $image_path = Storage::disk('public')->putFile('images', $image);
+                $Fotografia = new Fotografias($request->input());
+                $path = $item->storeAs("public/images/evento", $item->getClientOriginalName());
+                $Fotografia->ruta = $path;
+                $Fotografia->save();
+            }
+        }
+
         return response()->redirectTo(url('fotografia'))->with('success', 'Nueva foto creado!');
     }
     public function show($id)
