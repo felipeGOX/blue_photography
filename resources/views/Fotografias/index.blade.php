@@ -31,7 +31,8 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-                    <div class="card-body">
+                    {{--    REMOVE hidden PARA MOSTRAR LA TABLA --}}
+                    <div class="card-body" hidden>
                         <div class="table-responsive">
                             <x-adminlte-datatable id="tabla_Fotografias" :heads="$heads" head-theme="dark" striped
                                                   hoverable bordered compressed>
@@ -63,6 +64,16 @@
                                     </tr>
                                 @endforeach
                             </x-adminlte-datatable>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-2">
+                            @foreach($Fotografias as $Fotografia)
+                                <div class="card mb-3 elevation-2">
+                                    <img src="{{ Storage::url($Fotografia->ruta) }}"
+                                         alt="{{ $Fotografia->nombre }}" class="card-img-top">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
