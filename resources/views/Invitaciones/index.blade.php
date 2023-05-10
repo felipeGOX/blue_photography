@@ -39,6 +39,7 @@
                                         <td>{{ $invitacion->codigo }}</td>
                                         <td>{{ $invitacion->descripcion }}</td>
                                         <td>{{ $invitacion->fecha }}</td>
+                                        <td>{{ $invitacion->hora }}</td>
                                         <td>
                                             <a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Ver"
                                                href="{{url("invitacion/$invitacion->id")}}">
