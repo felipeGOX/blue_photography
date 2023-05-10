@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('fotografias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->text('descripcion')->nullable();
-            $table->float('precio', 8, 2);
             $table->string('ruta');
-       
+            $table->text('descripcion')->nullable();
+            $table->float('precio', 8, 2)->nullable();
             $table->timestamps();
         });
     }

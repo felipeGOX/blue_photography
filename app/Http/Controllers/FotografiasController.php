@@ -12,9 +12,9 @@ class FotografiasController extends Controller
         $Fotografias = Fotografias::all(); //saco todos los Fotografias de la  tabla Fotografias(base de datos)
 
         $heads = [
-            ['label' => 'Nombre', 'width' => 20],
-            ['label' => 'Precio', 'width' => 10],
-            ['label' => 'Caracteristicas', 'width' => 40],
+            ['label' => 'Ruta', 'width' => 20],
+            ['label' => 'Descripcion', 'width' => 10],
+            ['label' => 'Precio', 'width' => 40],
             ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
         ];
 
@@ -44,9 +44,10 @@ class FotografiasController extends Controller
     public function update(Request $request, $id)
     {
         $Fotografias = Fotografias::find($id);
-        $Fotografias->nombre = $request->get('nombre');
+        $Fotografias->ruta = $request->get('nombre');
+        $Fotografias->descripcion = $request->get('descripcion');
         $Fotografias->precio = $request->get('precio');
-        $Fotografias->caracteristicas = $request->get('caracteristicas');
+        
         $Fotografias->save();
         return response()->redirectTo(url('fotografia'))->with('success', "Fotografias \"$Fotografias->nombre\" actualizado!");
     }

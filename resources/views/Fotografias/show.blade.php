@@ -18,7 +18,7 @@
                             <legend>Informacion dela imagen</legend>
 
                             <div class="row">
-                                <x-adminlte-input name="nombre" label="Nombre" placeholder="Nombre de la foto" value="{{$fotografia->nombre}}" fgroup-class="col-md-6" disable-feedback disabled />
+                                <x-adminlte-input-file name="ruta" label="Imagen" fgroup-class="col-md-6" placeholder="Seleccione una imagen" value="{{$fotografia->ruta}}" accept="image/*" :max-file-size="10" disable-feedback disabled />
                             </div>
                             <div class="row">
                                 <x-adminlte-input name="descripcion" label="Descripcion" placeholder="Descripcion " value="{{$fotografia->descripcion}}" fgroup-class="col-md-6" disable-feedback disabled />
@@ -34,9 +34,9 @@
                                 </x-adminlte-input>
                             </div>
 
-                            <div class="row">
-                                <x-adminlte-input-file name="ruta" label="Imagen" fgroup-class="col-md-6" placeholder="Seleccione una imagen" value="{{$fotografia->ruta}}" accept="image/*" :max-file-size="10" disable-feedback disabled />
-                            </div>
+                            
+
+                            
                             <div class="row">
                                     <a class="btn btn btn-default btn-lg text-primary mx-2 " title="Volver"
                                        href="{{url("fotografia")}}">

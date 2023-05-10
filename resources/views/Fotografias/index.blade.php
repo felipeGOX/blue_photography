@@ -36,10 +36,9 @@
                             <x-adminlte-datatable id="tabla_Fotografias" :heads="$heads" head-theme="dark" striped hoverable bordered compressed>
                                 @foreach($Fotografias as $Fotografia)
                                     <tr>
-                                        <td>{{ $Fotografia->nombre }}</td>
+                                     <td>{{ $Fotografia->ruta }}</td>
                                         <td>{{ $Fotografia->descripcion }}</td>
                                         <td>{{ $Fotografia->precio }}</td>
-                                        <td>{{ $Fotografia->ruta }}</td>
                                         <td>
                                             <a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Ver"
                                                href="{{url("fotografia/$Fotografia->id")}}">
