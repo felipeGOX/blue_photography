@@ -51,8 +51,3 @@ Route::middleware([
     Route::resource('invitacion', InvitacionController::class);
 });
 
-
-Route::controller(FotografiasController::class)->group(function () {
-    Route::post('images/upload', 'store');
-});
-
