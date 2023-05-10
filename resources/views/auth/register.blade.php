@@ -10,23 +10,39 @@
             @csrf
 
             <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-label for="name" value="{{ __('Name') }}"/>
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
+                         autofocus autocomplete="name"/>
             </div>
 
             <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-label for="email" value="{{ __('Email') }}"/>
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
+                         autocomplete="username"/>
             </div>
 
             <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-label for="rol" value="{{ __('Rol') }}"/>
+                {{--                <x-input id="rol" class="block mt-1 w-full" type="text" name="rol" :value="old('rol')" required autocomplete="rol" />--}}
+                <x-adminlte-select2 name="rol"
+                                    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full">
+                    <option value="{{null}}">Selecciona un rol</option>
+                    @foreach(\App\Models\Roles::listRoles() as $rol)
+                        <option value="{{$rol->id}}">{{$rol->nombre}}</option>
+                    @endforeach
+                </x-adminlte-select2>
             </div>
 
             <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-label for="password" value="{{ __('Password') }}"/>
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                         autocomplete="new-password"/>
+            </div>
+
+            <div class="mt-4">
+                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}"/>
+                <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                         name="password_confirmation" required autocomplete="new-password"/>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

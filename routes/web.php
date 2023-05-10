@@ -1,16 +1,14 @@
 <?php
 
 use App\Http\Controllers\CatalogosController;
-use App\Http\Controllers\InvitacionController;
-use App\Http\Controllers\OrganizadoresController;
 use App\Http\Controllers\EventosController;
 use App\Http\Controllers\FotografiasController;
 use App\Http\Controllers\FotografosController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PaquetesController;
+use App\Http\Controllers\InvitacionController;
 use App\Http\Controllers\InvitadoController;
-
-use Mockery\Generator\StringManipulation\Pass\Pass;
+use App\Http\Controllers\OrganizadoresController;
+use App\Http\Controllers\PaquetesController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,17 +37,18 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
 
 //aqui van todas las rutas de tus crud
-Route::resource('organizador', OrganizadoresController::class);
-Route::resource('evento',EventosController::class);
-Route::resource('catalogo', CatalogosController::class);
+    Route::resource('organizador', OrganizadoresController::class);
+    Route::resource('evento', EventosController::class);
+    Route::resource('catalogo', CatalogosController::class);
 
-Route::resource('fotografo',FotografosController::class);
-Route::resource('paquetes',PaquetesController::class);
-Route::resource('fotografia',FotografiasController::class);
+    Route::resource('fotografo', FotografosController::class);
+    Route::resource('paquetes', PaquetesController::class);
+    Route::resource('fotografia', FotografiasController::class);
 
-Route::resource('invitado', InvitadoController::class);
-Route::resource('invitacion', InvitacionController::class);
+    Route::resource('invitado', InvitadoController::class);
+    Route::resource('invitacion', InvitacionController::class);
+});
+
 
