@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Invitacion extends Model
 {
     use HasFactory;
-    protected $fillable = 
-    [
-    'codigo',
-    'descripcion',
-    'fecha' 
-    ];
+
+    protected $table = 'invitaciones';
+    protected $fillable =
+        [
+            'codigo',
+            'descripcion',
+            'fecha'
+        ];
 }

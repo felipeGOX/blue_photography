@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\invitacion;
+use App\Models\Invitacion;
 use Illuminate\Http\Request;
 
 class InvitacionController extends Controller
@@ -12,7 +12,7 @@ class InvitacionController extends Controller
      */
     public function index()
     {
-        $Invitaciones = Invitacion::all(); 
+        $Invitaciones = Invitacion::all();
 
         $heads = [
             ['label' => 'Codigo', 'width' => 20],
@@ -46,7 +46,6 @@ class InvitacionController extends Controller
         return view('Invitaciones.edit', compact('Invitacion'));
     }
 
-    
     public function update(Request $request, $id)
     {
         $Invitacion = Invitacion::find($id);
