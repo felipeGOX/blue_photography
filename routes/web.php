@@ -4,6 +4,7 @@ use App\Http\Controllers\CatalogosController;
 use App\Http\Controllers\InvitacionController;
 use App\Http\Controllers\OrganizadoresController;
 use App\Http\Controllers\EventosController;
+use App\Http\Controllers\FotografiasController;
 use App\Http\Controllers\FotografosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaquetesController;
@@ -47,6 +48,7 @@ Route::resource('catalogo', CatalogosController::class);
 
 Route::resource('fotografo',FotografosController::class);
 Route::resource('paquetes',PaquetesController::class);
+Route::resource('fotografia',FotografiasController::class);
 
 Route::resource('invitado', InvitadoController::class);
 Route::resource('invitacion', InvitacionController::class);

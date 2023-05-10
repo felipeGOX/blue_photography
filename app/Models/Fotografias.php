@@ -10,9 +10,10 @@ class Fotografias extends Model
     use HasFactory;
     protected $fillable = 
     [
-    'nombre',  
-    'descripcion',
-    'precio'
+    'nombre', 
+    'descripcion', 
+    'precio',
+    'ruta'
     ];
      /*
     public function getRutaAttribute()

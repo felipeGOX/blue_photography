@@ -12,54 +12,57 @@ class InvitacionController extends Controller
      */
     public function index()
     {
-        //
+        $Invitaciones = Invitacion::all(); 
+
+        $heads = [
+            ['label' => 'Codigo', 'width' => 20],
+            ['label' => 'Descripcion', 'width' => 10],
+            ['label' => 'Fecha', 'width' => 40],
+        ];
+
+        return view('Invitaciones.index', compact('Invitaciones', 'heads'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('Invitaciones.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $Invitacion = new Invitacion($request->input());
+        $Invitacion->save();
+        return response()->redirectTo(url('invitacion'))->with('success', 'Nuevo Invitacion creado!');
+
+    }
+    public function show($id)
+    {
+        $Invitacion = Invitacion::find($id);
+        return view('Invitaciones.show', compact('Invitacion'));
+    }
+    public function edit($id)
+    {
+        $Invitacion = Invitacion::find($id);
+        return view('Invitaciones.edit', compact('Invitacion'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(invitacion $invitacion)
+    
+    public function update(Request $request, $id)
     {
-        //
+        $Invitacion = Invitacion::find($id);
+        $Invitacion->nombre = $request->get('codigo');
+        $Invitacion->direccion = $request->get('descripcion');
+        $Invitacion->fecha = $request->get('fecha');
+
+        $Invitacion->save();
+        return response()->redirectTo(url('invitacion'))->with('success', "Invitacion \"$Invitacion->nombre\" actualizado!");
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(invitacion $invitacion)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, invitacion $invitacion)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(invitacion $invitacion)
-    {
-        //
+        $Invitacion = Invitacion::find($id);
+        $Invitacion->delete();
+        return response()->redirectTo(url('invitacion'))->with('success', "Invitacion \"$Invitacion->nombre\" eliminado!");
     }
 }

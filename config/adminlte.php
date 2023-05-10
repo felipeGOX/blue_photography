@@ -332,6 +332,11 @@ return [
                             'url'  => 'evento',
                             'icon' => 'far fa-fw fa-file',
                         ],
+                        [
+                            'text' => 'Invitacion',
+                            'url'  => 'invitacion',
+                            'icon' => 'far fa-fw fa-file',
+                        ],
                     ],
                 ],
                 [
@@ -354,7 +359,15 @@ return [
                     'text' => 'Paquetes',
                     'url'  => 'paquetes',
                     'icon'        => 'far fa-fw fa-file',
-]                ],
+                ]    
+                ,
+                [
+                    'text' => 'Fotografias',
+                    'url'  => 'fotografia',
+                    'icon' => 'far fa-fw fa-file',
+                ]   
+
+                ],
         ],
 //        [
 //            'text' => 'change_password',
