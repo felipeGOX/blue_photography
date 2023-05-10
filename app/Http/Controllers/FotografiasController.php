@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Fotografias;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,9 @@ class FotografiasController extends Controller
         $Fotografias = Fotografias::all(); //saco todos los Fotografias de la  tabla Fotografias(base de datos)
 
         $heads = [
-            ['label' => 'Ruta', 'width' => 20],
-            ['label' => 'Descripcion', 'width' => 10],
-            ['label' => 'Precio', 'width' => 40],
+            ['label' => 'Nombre', 'width' => 20],
+            ['label' => 'Precio', 'width' => 10],
+            ['label' => 'Thumbnail', 'width' => 40],
             ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
         ];
 
@@ -22,13 +23,23 @@ class FotografiasController extends Controller
     }
     public function create()
     {
-        return view('Fotografias.create');
+        $images = [];
+        return view('Fotografias.create', compact('images'));
     }
 
     public function store(Request $request)
     {
-        $Fotografia = new Fotografias($request->input());
-        $Fotografia->save();
+        $fotos = $request->allFiles();
+        foreach ($fotos as $foto) {
+            foreach ($foto as $item) {
+//            $image_path = Storage::disk('public')->putFile('images', $image);
+                $Fotografia = new Fotografias($request->input());
+                $path = $item->storeAs("public/images/evento", $item->getClientOriginalName());
+                $Fotografia->ruta = $path;
+                $Fotografia->save();
+            }
+        }
+
         return response()->redirectTo(url('fotografia'))->with('success', 'Nueva foto creado!');
     }
     public function show($id)
@@ -44,10 +55,9 @@ class FotografiasController extends Controller
     public function update(Request $request, $id)
     {
         $Fotografias = Fotografias::find($id);
-        $Fotografias->ruta = $request->get('nombre');
-        $Fotografias->descripcion = $request->get('descripcion');
+        $Fotografias->nombre = $request->get('nombre');
         $Fotografias->precio = $request->get('precio');
-        
+        $Fotografias->caracteristicas = $request->get('caracteristicas');
         $Fotografias->save();
         return response()->redirectTo(url('fotografia'))->with('success', "Fotografias \"$Fotografias->nombre\" actualizado!");
     }

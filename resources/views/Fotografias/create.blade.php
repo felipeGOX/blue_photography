@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@section('plugins.BsCustomFileInput', true)
 @section('content')
 <section class="content container-fluid">
     <div class="row">
@@ -17,14 +18,17 @@
 
                             <legend>Sube una fotografia</legend>
                             <div class="row">
-                                <x-adminlte-input name="ruta" label="Ruta" placeholder="Nombre de la foto"  fgroup-class="col-md-6" disable-feedback />
+                                <x-adminlte-input name="nombre" label="Nombre" placeholder="Nombre de la foto"
+                                                  fgroup-class="col-md-6" disable-feedback/>
                             </div>
                             <div class="row">
-                                <x-adminlte-input name="descripcion" label="Descripcion" placeholder="Descripcion " fgroup-class="col-md-6" disable-feedback />
+                                <x-adminlte-input name="descripcion" label="Descripcion" placeholder="Descripcion "
+                                                  fgroup-class="col-md-6" disable-feedback/>
                             </div>
 
                             <div class="row">
-                                <x-adminlte-input name="precio" label="Precio" placeholder="Precio de la foto" type="number" igroup-size="sm" min=1 fgroup-class="col-md-6">
+                                <x-adminlte-input name="precio" label="Precio" placeholder="Precio de la foto"
+                                                  type="number" igroup-size="md" min=1 fgroup-class="col-md-6">
                                     <x-slot name="appendSlot">
                                         <div class="input-group-text bg-dark">
                                             <i class="fas fa-hashtag"></i>
@@ -33,6 +37,22 @@
                                 </x-adminlte-input>
                             </div>
 
+                            {{--                            <div class="row">--}}
+                            {{--                                <x-adminlte-input-file name="fotos[]" label="Fotografias" fgroup-class="col-md-6" placeholder="Seleccion las images" accept="image/*" :max-file-size="10" disable-feedback multiple />--}}
+                            {{--                            </div>--}}
+
+                            <div class="row">
+                                <x-adminlte-input-file id="fotos" name="fotos[]" label="Subir fotografias"
+                                                       fgroup-class="col-md-6" legend="Subir"
+                                                       placeholder="Selecciona las imagenes..." igroup-size="md"
+                                                       multiple>
+                                    <x-slot name="prependSlot">
+                                        <div class="input-group-text text-primary">
+                                            <i class="fas fa-upload"></i>
+                                        </div>
+                                    </x-slot>
+                                </x-adminlte-input-file>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </fieldset>
                     </form>

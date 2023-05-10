@@ -22,7 +22,7 @@
                                 <a href="{{ route('fotografia.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
-                            </div> 
+                        </div>
 
                         </div>
                     </div>
@@ -31,14 +31,26 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-                    <div class="card-body">
+                    {{--    REMOVE hidden PARA MOSTRAR LA TABLA --}}
+                    <div class="card-body" hidden>
                         <div class="table-responsive">
-                            <x-adminlte-datatable id="tabla_Fotografias" :heads="$heads" head-theme="dark" striped hoverable bordered compressed>
+                            <x-adminlte-datatable id="tabla_Fotografias" :heads="$heads" head-theme="dark" striped
+                                                  hoverable bordered compressed>
                                 @foreach($Fotografias as $Fotografia)
                                     <tr>
-                                     <td>{{ $Fotografia->ruta }}</td>
-                                        <td>{{ $Fotografia->descripcion }}</td>
+                                        <td>{{ $Fotografia->nombre }}</td>
                                         <td>{{ $Fotografia->precio }}</td>
+                                        <td>
+                                            <div class="col-md-3">
+                                                <div class="card mb-3">
+                                                    <img src="{{ Storage::url($Fotografia->ruta) }}"
+                                                         alt="{{ $Fotografia->nombre }}" class="card-img-top"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{--                                        <td>{{ $Fotografia->descripcion }}</td>--}}
+                                        {{--                                        <td>{{ $Fotografia->ruta }}</td>--}}
                                         <td>
                                             <a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Ver"
                                                href="{{url("fotografia/$Fotografia->id")}}">
@@ -52,6 +64,16 @@
                                     </tr>
                                 @endforeach
                             </x-adminlte-datatable>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-2">
+                            @foreach($Fotografias as $Fotografia)
+                                <div class="card mb-3 elevation-2">
+                                    <img src="{{ Storage::url($Fotografia->ruta) }}"
+                                         alt="{{ $Fotografia->nombre }}" class="card-img-top">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

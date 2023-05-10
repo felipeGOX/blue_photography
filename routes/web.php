@@ -51,4 +51,3 @@ Route::middleware([
     Route::resource('invitacion', InvitacionController::class);
 });
 
-
