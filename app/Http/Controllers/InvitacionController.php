@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\invitacion;
+use App\Models\Invitaciones;
 use Illuminate\Http\Request;
 
 class InvitacionController extends Controller
@@ -12,12 +12,13 @@ class InvitacionController extends Controller
      */
     public function index()
     {
-        $Invitaciones = Invitacion::all(); 
+        $Invitaciones = Invitaciones::all(); 
 
         $heads = [
             ['label' => 'Codigo', 'width' => 20],
             ['label' => 'Descripcion', 'width' => 10],
             ['label' => 'Fecha', 'width' => 40],
+            ['label' => 'Hora', 'width' => 40],
         ];
 
         return view('Invitaciones.index', compact('Invitaciones', 'heads'));
@@ -30,29 +31,30 @@ class InvitacionController extends Controller
 
     public function store(Request $request)
     {
-        $Invitacion = new Invitacion($request->input());
+        $Invitacion = new Invitaciones($request->input());
         $Invitacion->save();
         return response()->redirectTo(url('invitacion'))->with('success', 'Nuevo Invitacion creado!');
 
     }
     public function show($id)
     {
-        $Invitacion = Invitacion::find($id);
+        $Invitacion = Invitaciones::find($id);
         return view('Invitaciones.show', compact('Invitacion'));
     }
     public function edit($id)
     {
-        $Invitacion = Invitacion::find($id);
+        $Invitacion = Invitaciones::find($id);
         return view('Invitaciones.edit', compact('Invitacion'));
     }
 
     
     public function update(Request $request, $id)
     {
-        $Invitacion = Invitacion::find($id);
-        $Invitacion->nombre = $request->get('codigo');
-        $Invitacion->direccion = $request->get('descripcion');
+        $Invitacion = Invitaciones::find($id);
+        $Invitacion->codigo = $request->get('codigo');
+        $Invitacion->descripcion = $request->get('descripcion');
         $Invitacion->fecha = $request->get('fecha');
+        $Invitacion->hora = $request->get('hora');
 
         $Invitacion->save();
         return response()->redirectTo(url('invitacion'))->with('success', "Invitacion \"$Invitacion->nombre\" actualizado!");
@@ -61,7 +63,7 @@ class InvitacionController extends Controller
 
     public function destroy($id)
     {
-        $Invitacion = Invitacion::find($id);
+        $Invitacion = Invitaciones::find($id);
         $Invitacion->delete();
         return response()->redirectTo(url('invitacion'))->with('success', "Invitacion \"$Invitacion->nombre\" eliminado!");
     }

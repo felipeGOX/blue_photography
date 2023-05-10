@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('codigo')->unique();
             $table->text('descripcion')->nullable();
-            $table->timestamp('fecha')->nullable();
+            $table->date('fecha');
+            $table->time('hora');
             $table->timestamps();
         });
     }
