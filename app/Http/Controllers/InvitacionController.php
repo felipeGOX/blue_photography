@@ -12,7 +12,7 @@ class InvitacionController extends Controller
      */
     public function index()
     {
-        $Invitaciones = Invitaciones::all(); 
+        $Invitaciones = Invitaciones::all();
 
         $heads = [
             ['label' => 'Codigo', 'width' => 20],
@@ -47,7 +47,6 @@ class InvitacionController extends Controller
         return view('Invitaciones.edit', compact('Invitacion'));
     }
 
-    
     public function update(Request $request, $id)
     {
         $Invitacion = Invitaciones::find($id);

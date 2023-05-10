@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Invitaciones extends Model
 {
     use HasFactory;
-    protected $fillable = 
-    [
-    'codigo',
-    'descripcion',
-    'fecha',
-    'hora' 
-    ];
+
+    protected $fillable =
+        [
+            'codigo',
+            'descripcion',
+            'fecha',
+            'hora'
+        ];
 }
