@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@section('plugins.TempusDominusBs4', true)
 @section('content')
 <section class="content container-fluid">
     <div class="row">
@@ -24,11 +25,36 @@
                             </div>
 
                             <div class="row">
-                                <x-adminlte-input name="fecha" label="Fecha" placeholder="YYYY-MM-DD" format="YYYY-MM-DD" fgroup-class="col-md-6" disable-feedback />
+                                @php
+                                    $config = [
+                                        'format' => 'YYYY-MM-DD',
+                                        'dayViewHeaderFormat' => 'MMM YYYY',
+                                        'minDate' => "js:moment().startOf('month')",
+                                    ];
+                                @endphp
+                                <x-adminlte-input-date name="fecha" label="Fecha" igroup-size="sm"
+                                                       fgroup-class="col-md-6"
+                                                       :config="$config" placeholder="Fecha del evento">
+                                    <x-slot name="prependSlot">
+                                        <div class="input-group-text bg-dark">
+                                            <i class="fas fa-calendar-day"></i>
+                                        </div>
+                                    </x-slot>
+                                </x-adminlte-input-date>
                             </div>
 
                             <div class="row">
-                                <x-adminlte-input name="hora" label="Hora" placeholder="HH:mm" format="24hr" fgroup-class="col-md-6" disable-feedback />
+                                @php
+                                    $config = ['format'=>'HH:mm'];
+                                @endphp
+                                <x-adminlte-input-date name="hora" label="Hora" :config="$config" igroup-size="sm" format="24hr"
+                                                       fgroup-class="col-md-6" placeholder="Hora del evento">
+                                    <x-slot name="prependSlot">
+                                        <div class="input-group-text bg-gradient-info">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                    </x-slot>
+                                </x-adminlte-input-date>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>

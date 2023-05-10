@@ -5,7 +5,7 @@
 @section('content_header')
     <h1>Paquetes</h1>
 @stop
-
+@section('plugins.DatatablesPlugin', true)
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -33,7 +33,7 @@
                     @endif
                     <div class="card-body">
                         <div class="table-responsive">
-                            <x-adminlte-datatable id="tabla_paquetes" :heads="$heads" head-theme="dark" striped hoverable bordered compressed>
+                            <x-adminlte-datatable id="table1" :heads="$heads" head-theme="dark" striped hoverable bordered compressed>
                                 @foreach($Paquetes as $Paquete)
                                     <tr>
                                         <td>{{ $Paquete->nombre }}</td>

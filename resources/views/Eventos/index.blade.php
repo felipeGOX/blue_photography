@@ -5,7 +5,7 @@
 @section('content_header')
     <h1>Eventos</h1>
 @stop
-
+@section('plugins.DatatablesPlugin', true)
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -22,7 +22,7 @@
                                 <a href="{{ route('evento.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
-                            </div> 
+                            </div>
 
                         </div>
                     </div>
