@@ -339,11 +339,6 @@ return [
                         ],
                     ],
                 ],
-                [
-                    'text' => 'Fotografos',
-                    'url'  => 'fotografo',
-                    'icon' => 'far fa-fw fa-user',
-                ],
             ],
         ],
         [
@@ -364,6 +359,11 @@ return [
                 [
                     'text' => 'Fotografias',
                     'url'  => 'fotografia',
+                    'icon' => 'far fa-fw fa-file',
+                ],
+                [
+                    'text' => 'Catalogo',
+                    'url'  => 'catalogo',
                     'icon' => 'far fa-fw fa-file',
                 ]
 
