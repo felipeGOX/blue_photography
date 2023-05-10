@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\catalogos;
+use App\Models\Catalogos;
 use App\Models\Eventos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -35,7 +35,7 @@ class EventosController extends Controller
         $evento->save();
 
         // Creacion de catalogo automaticamente luego de haberse creado el evento
-        $catalogo = new catalogos([
+        $catalogo = new Catalogos([
             'nombre' => $evento->nombre,
             'descripcion' => "Catalogo del evento $evento->nombre",
             'codigo' => Str::orderedUuid() // generacion de codigo para el catalogo

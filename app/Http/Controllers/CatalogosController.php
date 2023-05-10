@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalogos;
 use Illuminate\Http\Request;
 
 class CatalogosController extends Controller
@@ -30,7 +31,7 @@ class CatalogosController extends Controller
         $catalogo->save();
 
         // Creacion de catalogo automaticamente luego de haberse creado el catalogo
-        $catalogo = new catalogos([
+        $catalogo = new Catalogos([
             'nombre' => $catalogo->nombre,
             'descripcion' => $catalogo->descripcion,
             'codigo' => Str::orderedUuid() // generacion de codigo para el catalogo
