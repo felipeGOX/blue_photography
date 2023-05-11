@@ -17,13 +17,12 @@
                         <span id="card_title">
                             {{ __('Catalogos') }}
                         </span>
-
-                            <x-adminlte-modal id="modalCustom" title="Buscar catalogo" size="lg" theme="primary"
-                                              icon="fas fa-find" v-centered static-backdrop scrollable>
-                                <form method="POST"
-                                      action="{{ route('invitacion.store') }}"
-                                      role="form" enctype="multipart/form-data">
-                                    @csrf
+                            <form method="POST"
+                                  action="{{ route('invitacion.store') }}"
+                                  role="form" enctype="multipart/form-data">
+                                @csrf
+                                <x-adminlte-modal id="modalCustom" title="Buscar catalogo" size="lg" theme="primary"
+                                                  icon="fas fa-find" v-centered static-backdrop scrollable>
                                     <div class="row">
                                         <x-adminlte-input name="codigo" label="Codigo de Catalogo"
                                                           placeholder="Indique el codigo de catalogo"
@@ -34,8 +33,8 @@
                                                            label="Buscar"/>
                                         <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal"/>
                                     </x-slot>
-                                </form>
-                            </x-adminlte-modal>
+                                </x-adminlte-modal>
+                            </form>
                             <div class="float-right">
                                 <x-adminlte-button label="Buscar Catalogo" data-toggle="modal"
                                                    data-target="#modalCustom" class="bg-primary"/>
