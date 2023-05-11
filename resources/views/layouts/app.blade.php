@@ -1,13 +1,13 @@
 @extends('adminlte::page', ['iFrameEnabled' => true])
 
-@section('title', 'Dashboard')
+@section('title', 'Blue_Photography')
 
 @section('content_header')
     <h1>Dashboard</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p></p>
 @stop
 
 @section('css')
