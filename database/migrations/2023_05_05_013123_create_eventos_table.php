@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->time('hora');
             $table->unsignedBigInteger('id_catalogo')->nullable();
+            $table->unsignedBigInteger('id_organizador')->nullable();
           
             $table->timestamps();
         });
