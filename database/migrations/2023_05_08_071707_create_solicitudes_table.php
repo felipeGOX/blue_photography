@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('estado');
             $table->unsignedBigInteger('id_organizador')->nullable();
             $table->unsignedBigInteger('id_paquete')->nullable();
+            $table->unsignedBigInteger('id_evento')->nullable();
             $table->timestamps();
         });
     }
