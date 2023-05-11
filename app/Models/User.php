@@ -83,11 +83,12 @@ class User extends Authenticatable
 
     public static function getAllFotografos(): Collection
     {
-        return User::with(['paquetes'])->has('paquetes')
+        $query = User::with(['paquetes'])->has('paquetes')
+            ->select('users.*')
             ->join('rol_usuarios', 'users.id', '=', 'rol_usuarios.id_usuario')
             ->join('roles', 'roles.id', '=', 'rol_usuarios.id_rol')
-            ->where('roles.nombre', '=', 'Fotografo')
-            ->get();
+            ->where('roles.nombre', '=', 'Fotografo');
+        return  $query->get();
     }
 
 }

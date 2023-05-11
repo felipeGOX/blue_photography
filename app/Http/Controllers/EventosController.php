@@ -16,10 +16,10 @@ class EventosController extends Controller
         $user = auth()->user();
         $Eventos = [];
         if ($user->Rol()->nombre == 'Organizador') {
-            $Eventos = Eventos::with('Catalogo')->where('id_organizador', '=', $user->id)->get();
+            $Eventos = Eventos::with('catalogo')->where('id_organizador', '=', $user->id)->get();
         }
         if ($user->Rol()->nombre == 'Fotografo') {
-            $Eventos = Eventos::with('Catalogo')->select('eventos.*')
+            $Eventos = Eventos::with('catalogo')->select('eventos.*')
                 ->join('solicitudes', 'solicitudes.id_evento', '=', 'eventos.id')
                 ->join('paquetes', 'solicitudes.id_paquete', '=', 'paquetes.id')
                 ->join('users', 'paquetes.id_fotografo', '=', 'users.id')
@@ -48,6 +48,7 @@ class EventosController extends Controller
     public function store(Request $request)
     {
         $evento = new Eventos($request->input());
+        $evento->id_organizador = auth()->user()->id;
         $evento->save();
 
         // Creacion de catalogo automaticamente luego de haberse creado el evento
@@ -59,9 +60,13 @@ class EventosController extends Controller
         $catalogo->id_evento = $evento->id;
         $catalogo->save();
 
+        $evento->id_catalogo = $catalogo->id;
+        $evento->save();
+
+
         // Guardar la solicitud
         $solicitud = new Solicitud(['estado' => 1]);
-        $solicitud->id_organiazdor = auth()->user()->id;
+        $solicitud->id_organizador = auth()->user()->id;
         $solicitud->id_paquete = $request->get('paquete');
         $solicitud->id_evento = $evento->id;
         $solicitud->save();
