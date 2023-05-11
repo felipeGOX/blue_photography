@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->date('fecha');
             $table->time('hora');
+            $table->unsignedBigInteger('id_evento')->nullable();
             $table->timestamps();
         });
     }

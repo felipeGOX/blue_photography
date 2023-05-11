@@ -17,7 +17,7 @@ return new class extends Migration
             $table->float('precio', 8, 2);
             $table->string('caracteristicas');
        
-            // $table->unsignedBigInteger('id_fotografo')->nullable();
+            $table->unsignedBigInteger('id_fotografo')->nullable();
             // $table->foreign('id_fotografo')->references('id')->on('fotografos');
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->date('fecha');
             $table->time('hora');
+            $table->unsignedBigInteger('id_catalogo')->nullable();
           
             $table->timestamps();
         });

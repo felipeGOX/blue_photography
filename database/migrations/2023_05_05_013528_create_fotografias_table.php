@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('ruta');
             $table->text('descripcion')->nullable();
             $table->float('precio', 8, 2)->nullable();
+            $table->unsignedBigInteger('id_catalogo')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('descripcion')->nullable();
             $table->text('codigo');
+            $table->unsignedBigInteger('id_evento')->nullable();
             $table->timestamps();
         });
     }
