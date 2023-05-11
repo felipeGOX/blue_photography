@@ -55,5 +55,7 @@ Route::middleware([
 
     Route::resource('invitado', InvitadoController::class);
     Route::resource('invitacion', InvitacionController::class);
+    Route::get('checkout',[InvitadoController::class,'checkout'])->name('checkout');
+    Route::post('download',[FotografiasController::class,'download'])->name('download');
 });
 

@@ -93,5 +93,12 @@ class FotografiasController extends Controller
 //        return redirect()->to(url('evento/catalogo/' . $fotografia->id_catalogo))->with('success', "Foto eliminada!");
 //        return response()->redirectTo(url('fotografia'))->with('success', "Fotografias \"$Fotografias->nombre\" eliminado!");
     }
+
+    public function download(Request $request)
+    {
+        $fotografia = Fotografias::find($request->get('id_fotografia'));
+//        $image = Image::make(public_path($fotografia->ruta));
+        return response()->file(public_path($fotografia->ruta));
+    }
 }
 

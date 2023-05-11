@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Eventos;
+use App\Models\Fotografias;
+use Illuminate\Http\Request;
 
 class InvitadoController extends Controller
 {
@@ -27,4 +29,10 @@ class InvitadoController extends Controller
         return view('invitado.eventos', compact('Eventos', 'heads'));
     }
 
+    public function checkout(Request $request)
+    {
+        $fotografia = Fotografias::find($request->get('id_fotografia'));
+
+        return view('checkout.checkout_1',compact('fotografia'));
+    }
 }
