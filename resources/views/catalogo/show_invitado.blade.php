@@ -38,7 +38,7 @@
                                             </x-slot>
                                             <x-slot name="footerSlot">
                                                 <a class="btn btn-block btn-primary text-primary" title="Comprar"
-                                                   href="#">
+                                                   href="{{route('checkout',['id_fotografia'=>$Fotografia->id])}}">
                                                     <i class="fa fa-lg fa-fw fa-dollar-sign"></i> {{__('Comprar')}}
                                                 </a>
                                             </x-slot>
