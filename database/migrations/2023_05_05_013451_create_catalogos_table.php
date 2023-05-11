@@ -16,12 +16,9 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('descripcion')->nullable();
             $table->text('codigo');
-            $table->string('ruta');
-
-    
             $table->timestamps();
         });
-    }   
+    }
 
     /**
      * Reverse the migrations.
