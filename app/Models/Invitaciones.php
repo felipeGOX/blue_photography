@@ -11,9 +11,7 @@ class Invitaciones extends Model
 
     protected $fillable =
         [
-            'codigo',
-            'descripcion',
-            'fecha',
-            'hora'
+            'codigo'
+            
         ];
 }

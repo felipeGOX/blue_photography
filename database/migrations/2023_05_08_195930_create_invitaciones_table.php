@@ -14,9 +14,6 @@ return new class extends Migration
         Schema::create('invitaciones', function (Blueprint $table) {
             $table->id();
             $table->string('codigo')->unique();
-            $table->text('descripcion')->nullable();
-            $table->date('fecha');
-            $table->time('hora');
             $table->unsignedBigInteger('id_evento')->nullable();
             $table->unsignedBigInteger('id_invitado')->nullable();
             $table->timestamps();
