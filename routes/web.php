@@ -30,18 +30,7 @@ Route::get('/home', function () {
     return response()->redirectTo('/dashboard');
 });
 Route::get('/test', function () {
-    $str = Str::orderedUuid();
-    dd($str, str_split($str, 13)[0]);
-    $publicPath = public_path(Fotografias::getWatermarkImagePath());
-    $imgPath = public_path('storage/images/evento/325732555_138001552189509_4093740861347866895_n.jpeg');
-    $waterMark = Image::make($publicPath);
-    $image = Image::make($imgPath);
-    $image->insert($waterMark, 'center');
-    $newPath = $image->save('public/watermark/evento' . Str::uuid() . ".jpg");
-//    return view('adminlte');
-//    dd($image);
-//    return response()->file($publicPath);
-    return response()->file(public_path($newPath));
+    return view('checkout.checkout_1');
 });
 Route::middleware([
     'auth:sanctum',
