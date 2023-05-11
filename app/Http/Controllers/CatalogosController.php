@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalogos;
+use App\Models\Fotografias;
 use Illuminate\Http\Request;
 
 class CatalogosController extends Controller
@@ -44,7 +45,15 @@ class CatalogosController extends Controller
     public function show($id)
     {
         $catalogo = Catalogos::find($id);
-        return view('Catalogos.show', compact('catalogo'));
+        $Fotografias = Fotografias::all();
+
+        $heads = [
+            ['label' => 'Nombre', 'width' => 20],
+            ['label' => 'Precio', 'width' => 10],
+            ['label' => 'Thumbnail', 'width' => 40],
+            ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
+        ];
+        return view('catalogo.show', compact('catalogo', 'Fotografias', 'heads'));
     }
 
     public function edit($id)

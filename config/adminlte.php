@@ -319,25 +319,30 @@ return [
             'submenu' => [
                 [
                     'text' => 'Eventos',
-                    'url'  => 'eventos',
-                    'icon' => 'far fa-fw fa-file',
-                    'submenu' => [
-                        [
-                            'text' => 'Catalogo',
-                            'url'  => 'catalogo',
-                            'icon' => 'far fa-fw fa-file',
-                        ],
-                        [
-                            'text' => 'Evento',
-                            'url'  => 'evento',
-                            'icon' => 'far fa-fw fa-file',
-                        ],
-                        [
-                            'text' => 'Invitacion',
-                            'url'  => 'invitacion',
-                            'icon' => 'far fa-fw fa-file',
-                        ],
-                    ],
+                    'url' => 'evento',
+                    'icon' => 'far fa-fw fa-calendar',
+//                    'submenu' => [
+//                        [
+//                            'text' => 'Catalogo',
+//                            'url'  => 'catalogo',
+//                            'icon' => 'far fa-fw fa-file',
+//                        ],
+//                        [
+//                            'text' => 'Evento',
+//                            'url'  => 'evento',
+//                            'icon' => 'far fa-fw fa-file',
+//                        ],
+//                    ],
+                ],
+                [
+                    'text' => 'Fotografos',
+                    'url' => 'fotografo',
+                    'icon' => 'far fa-fw fa-user',
+                ],
+                [
+                    'text' => 'Invitacion',
+                    'url' => 'invitacion',
+                    'icon' => 'far fa-fw fa-paper',
                 ],
             ],
         ],
@@ -352,22 +357,16 @@ return [
             'submenu' => [
                 [
                     'text' => 'Paquetes',
-                    'url'  => 'paquetes',
-                    'icon'        => 'far fa-fw fa-file',
+                    'url' => 'paquetes',
+                    'icon' => 'far fa-fw fa-file',
                 ]
                 ,
                 [
-                    'text' => 'Fotografias',
-                    'url'  => 'fotografia',
-                    'icon' => 'far fa-fw fa-file',
-                ],
-                [
-                    'text' => 'Catalogo',
-                    'url'  => 'catalogo',
-                    'icon' => 'far fa-fw fa-file',
+                    'text' => 'Eventos',
+                    'url' => 'evento',
+                    'icon' => 'far fa-fw fa-calendar',
                 ]
-
-                ],
+            ],
         ],
 //        [
 //            'text' => 'change_password',

@@ -21,10 +21,12 @@ class FotografiasController extends Controller
 
         return view('Fotografias.index', compact('Fotografias', 'heads'));
     }
-    public function create()
+
+    public function create(Request $request)
     {
         $images = [];
-        return view('Fotografias.create', compact('images'));
+        $id_catalogo = $request->get('id_catalogo');
+        return view('Fotografias.create', compact('images', 'id_catalogo'));
     }
 
     public function store(Request $request)
@@ -33,19 +35,34 @@ class FotografiasController extends Controller
         foreach ($fotos as $foto) {
             foreach ($foto as $item) {
 //            $image_path = Storage::disk('public')->putFile('images', $image);
-                $Fotografia = new Fotografias($request->input());
+//                $path = $item->storeAs("public/images/evento", $item->getClientOriginalName());
+//                $Fotografia->ruta = $path;
+//                $Fotografia->save();
+
+//                $image = Image::make(public_path($path));
+//                $image = Image::make($item);
+//                $watermarkImage = Image::make(public_path(Fotografias::getWatermarkImagePath()))->opacity(50)
+//                    ->resize($image->width() / 2, $image->height() / 2);
+//                $image->insert($watermarkImage, 'center');
+//                $newPath = public_path('storage/images/watermark/evento'.\Illuminate\Support\Str::uuid().".jpg");
+//                $image->save($newPath);
+//                $newPath=Storage::disk('public')->putFile('watermark', $image);
+                $fotografia = new Fotografias($request->input());
                 $path = $item->storeAs("public/images/evento", $item->getClientOriginalName());
-                $Fotografia->ruta = $path;
-                $Fotografia->save();
+                $fotografia->ruta = $path;
+                $id_catalogo = $request->get('id_catalogo');
+                $fotografia->id_catalogo = $id_catalogo;
+                $fotografia->save();
             }
         }
 
-        return response()->redirectTo(url('fotografia'))->with('success', 'Nueva foto creado!');
+        return redirect()->route('catalogo.show', ['catalogo' => $id_catalogo])->with('success', 'Nuevas fotografias agregadas!');
+//        return response()->redirectTo(url('fotografia'))->with('success', 'Nueva foto creado!');
     }
     public function show($id)
     {
-        $Fotografias = Fotografias::find($id);
-        return view('Fotografias.show', compact('Fotografias'));
+        $fotografia = Fotografias::find($id);
+        return view('Fotografias.show', compact('fotografia'));
     }
     public function edit($id)
     {
@@ -63,9 +80,10 @@ class FotografiasController extends Controller
     }
     public function destroy($id)
     {
-        $Fotografias = Fotografias::find($id);
-        $Fotografias->delete();
-        return response()->redirectTo(url('fotografia'))->with('success', "Fotografias \"$Fotografias->nombre\" eliminado!");
+        $fotografia = Fotografias::find($id);
+        $fotografia->delete();
+        return response()->redirectTo(url('evento/catalogo/' . $fotografia->id_catalogo))->with('success', "Foto eliminada!");
+//        return response()->redirectTo(url('fotografia'))->with('success', "Fotografias \"$Fotografias->nombre\" eliminado!");
     }
 }
 

@@ -34,9 +34,6 @@
                                 </x-adminlte-input>
                             </div>
 
-                            
-
-                            
                             <div class="row">
                                     <a class="btn btn btn-default btn-lg text-primary mx-2 " title="Volver"
                                        href="{{url("fotografia")}}">
