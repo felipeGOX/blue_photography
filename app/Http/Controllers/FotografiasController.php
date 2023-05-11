@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalogos;
 use App\Models\Fotografias;
 use Illuminate\Http\Request;
 
@@ -59,16 +60,19 @@ class FotografiasController extends Controller
         return redirect()->route('catalogo.show', ['catalogo' => $id_catalogo])->with('success', 'Nuevas fotografias agregadas!');
 //        return response()->redirectTo(url('fotografia'))->with('success', 'Nueva foto creado!');
     }
+
     public function show($id)
     {
         $fotografia = Fotografias::find($id);
         return view('Fotografias.show', compact('fotografia'));
     }
+
     public function edit($id)
     {
         $Fotografias = Fotografias::find($id);
         return view('Fotografias.edit', compact('Fotografias'));
     }
+
     public function update(Request $request, $id)
     {
         $Fotografias = Fotografias::find($id);
@@ -78,11 +82,15 @@ class FotografiasController extends Controller
         $Fotografias->save();
         return response()->redirectTo(url('fotografia'))->with('success', "Fotografias \"$Fotografias->nombre\" actualizado!");
     }
+
     public function destroy($id)
     {
         $fotografia = Fotografias::find($id);
+        $catalogo = Catalogos::find($fotografia->id_catalogo);
         $fotografia->delete();
-        return response()->redirectTo(url('evento/catalogo/' . $fotografia->id_catalogo))->with('success', "Foto eliminada!");
+
+        return redirect()->route('catalogo.show', ['catalogo' => $catalogo])->with('success', "Foto eliminada!");
+//        return redirect()->to(url('evento/catalogo/' . $fotografia->id_catalogo))->with('success', "Foto eliminada!");
 //        return response()->redirectTo(url('fotografia'))->with('success', "Fotografias \"$Fotografias->nombre\" eliminado!");
     }
 }
