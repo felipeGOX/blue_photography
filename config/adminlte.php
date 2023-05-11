@@ -321,7 +321,7 @@ return [
         ],
         [
             'header' => 'INVITADOS',
-            'can' => ['isFotografo','isAdmin'],
+            'can' => ['isInvitado','isAdmin'],
         ],
         [
             'text' => 'Catalogos',
@@ -338,8 +338,7 @@ return [
             'url' => 'paquetes',
             'icon' => 'far fa-fw fa-clone',
             'can' => ['isFotografo','isAdmin'],
-        ]
-        ,
+        ],
         [
             'text' => 'Eventos',
             'url' => 'evento',
