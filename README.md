@@ -22,3 +22,6 @@ Migrate database
 
 Seed database
 `php artisan db:seed`
+
+Link storage to public
+`php artisan storage:link`
