@@ -18,25 +18,37 @@
                             {{ __('Catalogos') }}
                         </span>
 
-                            <x-adminlte-modal id="modalCustom" title="Account Policy" size="lg" theme="teal"
-                                              icon="fas fa-bell" v-centered static-backdrop scrollable>
-                                <div style="height:800px;">Read the account policies...</div>
-                                <x-slot name="footerSlot">
-                                    <x-adminlte-button class="mr-auto" theme="success" label="Accept"/>
-                                    <x-adminlte-button theme="danger" label="Dismiss" data-dismiss="modal"/>
-                                </x-slot>
+                            <x-adminlte-modal id="modalCustom" title="Buscar catalogo" size="lg" theme="primary"
+                                              icon="fas fa-find" v-centered static-backdrop scrollable>
+                                <form method="POST"
+                                      action="{{ route('invitacion.store') }}"
+                                      role="form" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <x-adminlte-input name="codigo" label="Codigo de Catalogo"
+                                                          placeholder="Indique el codigo de catalogo"
+                                                          fgroup-class="col-md-6" disable-feedback/>
+                                    </div>
+                                    <x-slot name="footerSlot">
+                                        <x-adminlte-button class="mr-auto" type="submit" theme="success"
+                                                           label="Buscar"/>
+                                        <x-adminlte-button theme="danger" label="Cancelar" data-dismiss="modal"/>
+                                    </x-slot>
+                                </form>
                             </x-adminlte-modal>
                             <div class="float-right">
                                 <x-adminlte-button label="Buscar Catalogo" data-toggle="modal"
                                                    data-target="#modalCustom" class="bg-primary"/>
-                                {{--                            <a href="{{ route('evento.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">--}}
-                                {{--                                    {{ __('Buscar Catalogo') }}--}}
-                                {{--                                </a>--}}
                             </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+                    @if ($message = Session::get('alert'))
+                        <div class="alert alert-danger">
                             <p>{{ $message }}</p>
                         </div>
                     @endif

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalogos;
 use App\Models\Invitaciones;
 use Illuminate\Http\Request;
 
@@ -31,16 +32,30 @@ class InvitacionController extends Controller
 
     public function store(Request $request)
     {
-        $Invitacion = new Invitaciones($request->input());
-        $Invitacion->save();
-        return response()->redirectTo(url('invitacion'))->with('success', 'Nuevo Invitacion creado!');
+        $invitacion = Invitaciones::where('codigo', '=', $request->get('codigo', ''))->first();
+        if (is_null($invitacion)) {
+            $invitacion = new Invitaciones($request->input());
+            $catalogo = Catalogos::with('evento')
+                ->where('codigo', '=', $invitacion->codigo)
+                ->first();
 
+            if (!is_null($catalogo)) {
+                $invitacion->id_invitado = auth()->user()->id;
+                $invitacion->id_evento = $catalogo->evento->id;
+                $invitacion->save();
+                return response()->redirectTo(url('invitado'))->with('success', 'Invitacion aceptada!');
+            }
+            return response()->redirectTo(url('invitado'))->with('alert', 'Catalogo no encontrado!');
+        }
+        return response()->redirectTo(url('invitado'))->with('success', 'Invitacion aceptada!');
     }
+
     public function show($id)
     {
         $Invitacion = Invitaciones::find($id);
         return view('Invitaciones.show', compact('Invitacion'));
     }
+
     public function edit($id)
     {
         $Invitacion = Invitaciones::find($id);

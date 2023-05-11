@@ -53,7 +53,10 @@ class CatalogosController extends Controller
             ['label' => 'Thumbnail', 'width' => 40],
             ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
         ];
-        return view('catalogo.show', compact('catalogo', 'Fotografias', 'heads'));
+        if (auth()->user()->Rol()->nombre == 'Invitado')
+            return view('catalogo.show_invitado', compact('catalogo', 'Fotografias', 'heads'));
+        else
+            return view('catalogo.show', compact('catalogo', 'Fotografias', 'heads'));
     }
 
     public function edit($id)
