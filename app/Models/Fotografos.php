@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Fotografos extends Model
 {
     use HasFactory;
-    protected $fillable = 
-    [
-    'razon_social' 
-    ];
+    protected $fillable =
+        [
+            'razon_social'
+        ];
 }

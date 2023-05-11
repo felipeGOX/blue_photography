@@ -30,7 +30,7 @@
                                         'format' => 'YYYY-MM-DD',
                                         'dayViewHeaderFormat' => 'MMM YYYY',
                                         'minDate' => "js:moment().startOf('month')",
-                                    ];
+                                    ]
                                 @endphp
                                 <x-adminlte-input-date name="fecha" label="Fecha" igroup-size="sm"
                                                        fgroup-class="col-md-6"
@@ -45,9 +45,10 @@
 
                             <div class="row">
                                 @php
-                                    $config = ['format'=>'HH:mm'];
+                                    $config = ['format'=>'HH:mm']
                                 @endphp
-                                <x-adminlte-input-date name="hora" label="Hora" :config="$config" igroup-size="sm" format="24hr"
+                                <x-adminlte-input-date name="hora" label="Hora" :config="$config" igroup-size="sm"
+                                                       format="24hr"
                                                        fgroup-class="col-md-6" placeholder="Hora del evento">
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text bg-gradient-info">
@@ -57,6 +58,22 @@
                                 </x-adminlte-input-date>
                             </div>
 
+                            <div class="row">
+                                <x-adminlte-select2 id="paquete" name="paquete" fgroup-class="col-md-6"
+                                                    label="Fotografo">
+                                    @foreach($fotografos as $fotografo)
+                                        <option disabled>{{$fotografo->name}}</option>
+                                        @foreach($fotografo->paquetes as $paquete)
+                                            <option value="{{$paquete->id}}">
+                                                <x-adminlte-info-box title="{{$paquete->nombre}}"
+                                                                     text="{{$paquete->precio}}"
+                                                                     icon="fas fa-lg fa-user-plus text-primary"
+                                                                     theme="gradient-primary" icon-theme="white"/>
+                                            </option>
+                                        @endforeach
+                                    @endforeach
+                                </x-adminlte-select2>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </fieldset>
                     </form>

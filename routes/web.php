@@ -8,7 +8,10 @@ use App\Http\Controllers\InvitacionController;
 use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\OrganizadoresController;
 use App\Http\Controllers\PaquetesController;
+use App\Models\Fotografias;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +30,18 @@ Route::get('/home', function () {
     return response()->redirectTo('/dashboard');
 });
 Route::get('/test', function () {
-    return view('adminlte');
+    $str = Str::orderedUuid();
+    dd($str, str_split($str, 13)[0]);
+    $publicPath = public_path(Fotografias::getWatermarkImagePath());
+    $imgPath = public_path('storage/images/evento/325732555_138001552189509_4093740861347866895_n.jpeg');
+    $waterMark = Image::make($publicPath);
+    $image = Image::make($imgPath);
+    $image->insert($waterMark, 'center');
+    $newPath = $image->save('public/watermark/evento' . Str::uuid() . ".jpg");
+//    return view('adminlte');
+//    dd($image);
+//    return response()->file($publicPath);
+    return response()->file(public_path($newPath));
 });
 Route::middleware([
     'auth:sanctum',
@@ -38,14 +52,17 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-//aqui van todas las rutas de tus crud
+    Route::prefix('evento')->group(function () {
+        Route::resource('fotografia', FotografiasController::class);
+    });
+
     Route::resource('organizador', OrganizadoresController::class);
     Route::resource('evento', EventosController::class);
-    Route::resource('catalogo', CatalogosController::class);
+    Route::resource('evento/catalogo', CatalogosController::class);
 
     Route::resource('fotografo', FotografosController::class);
     Route::resource('paquetes', PaquetesController::class);
-    Route::resource('fotografia', FotografiasController::class);
+//    Route::resource('fotografia', FotografiasController::class);
 
     Route::resource('invitado', InvitadoController::class);
     Route::resource('invitacion', InvitacionController::class);

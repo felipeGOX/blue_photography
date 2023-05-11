@@ -35,8 +35,8 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $roleUser = Rol_usuario::create([
-            'id_usuario' => $input['rol'],
-            'id_rol' => $user->id,
+            'id_rol' => $input['rol'],
+            'id_usuario' => $user->id,
         ]);
         return $user;
     }

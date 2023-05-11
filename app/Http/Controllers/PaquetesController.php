@@ -9,7 +9,7 @@ class PaquetesController extends Controller
 {
     public function index()
     {
-        $Paquetes = Paquetes::all(); //saco todos los paquetes de la  tabla paquetes(base de datos)
+        $Paquetes = Paquetes::where('id_fotografo', '=', auth()->user()->id)->get();
 
         $heads = [
             ['label' => 'Nombre', 'width' => 20],
@@ -28,6 +28,7 @@ class PaquetesController extends Controller
     public function store(Request $request)
     {
         $paquete = new Paquetes($request->input());
+        $paquete->id_fotografo = auth()->user()->id;
         $paquete->save();
         return response()->redirectTo(url('paquetes'))->with('success', 'Nuevo paquete creado!');
 

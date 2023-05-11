@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Catalogos extends Model
 {
     use HasFactory;
 
-    // protected $table = 'catalogos';
     protected $fillable =
         [
             'nombre',
@@ -17,17 +17,8 @@ class Catalogos extends Model
             'codigo',
         ];
 
-    /*
-    public function getRutaAttribute()
+    public function Evento(): BelongsTo
     {
-        return asset('storage/' . $this->attributes['ruta']);
+        return $this->belongsTo(Eventos::class, 'id_evento', 'id');
     }
-
-    En este ejemplo, se agrega un atributo "ruta" al modelo y
-    se define una función "getRutaAttribute" para generar dinámicamente
-     la ruta completa de la imagen a partir del campo "ruta" almacenado
-      en la base de datos. La función utiliza la función "asset"
-      de Laravel para construir la ruta completa de la imagen en función
-       del almacenamiento utilizado en tu aplicación.
-    */
 }

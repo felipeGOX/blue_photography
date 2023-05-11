@@ -17,14 +17,14 @@
                         <span id="card_title">
                             {{ __('Eventos') }}
                         </span>
-
+                        @if(auth()->user()->Rol()->nombre=='Organizador')
                         <div class="float-right">
                                 <a href="{{ route('evento.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
                             </div>
-
                         </div>
+                        @endif
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
@@ -33,21 +33,31 @@
                     @endif
                     <div class="card-body">
                         <div class="table-responsive">
-                            <x-adminlte-datatable id="tabla_eventos" :heads="$heads" head-theme="dark" striped hoverable bordered compressed>
-                                @foreach($Eventos as $Evento)
+                            <x-adminlte-datatable id="tabla_eventos" :heads="$heads" head-theme="dark" striped hoverable
+                                                  bordered compressed>
+                                @foreach($Eventos as $evento)
                                     <tr>
-                                        <td>{{ $Evento->nombre }}</td>
-                                        <td>{{ $Evento->direccion }}</td>
-                                        <td>{{ $Evento->fecha }}</td>
-                                        <td>{{ $Evento->hora }}</td>
+                                        <td>{{ $evento->nombre }}</td>
+                                        <td>{{ $evento->direccion }}</td>
+                                        <td>{{ $evento->fecha }}</td>
+                                        <td>{{ $evento->hora }}</td>
+                                        <td>{{$evento->catalogo->codigo}}</td>
                                         <td>
-                                            <a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Ver"
-                                               href="{{url("evento/$Evento->id")}}">
-                                                <i class="fa fa-lg fa-fw fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar"
-                                               href="{{url("evento/$Evento->id/edit")}}">
-                                                <i class="fa fa-lg fa-fw fa-pen"></i>
+                                            @if(auth()->user()->Rol()->nombre=='Organizador')
+                                                <a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Ver"
+                                                   href="{{url("evento/$evento->id")}}">
+                                                    <i class="fa fa-lg fa-fw fa-eye"></i>
+                                                </a>
+                                                <a class="btn btn-xs btn-default text-primary mx-1 shadow"
+                                                   title="Editar"
+                                                   href="{{url("evento/$evento->id/edit")}}">
+                                                    <i class="fa fa-lg fa-fw fa-pen"></i>
+                                                </a>
+                                            @endif
+                                            <a class="btn btn-xs btn-default text-primary mx-1 shadow"
+                                               title="Ver Catalogo"
+                                               href="{{url("evento/catalogo/".$evento->catalogo->id)}}">
+                                                <i class="fa fa-lg fa-fw fa-images"></i>
                                             </a>
                                         </td>
                                     </tr>

@@ -12,7 +12,8 @@
                     <span class="card-title">Sube una fotografia</span>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('fotografia.store') }}" role="form" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('fotografia.store',['id_catalogo'=>$id_catalogo]) }}"
+                          role="form" enctype="multipart/form-data">
                         @csrf
                         <fieldset>
 
@@ -37,10 +38,6 @@
                                 </x-adminlte-input>
                             </div>
 
-                            {{--                            <div class="row">--}}
-                            {{--                                <x-adminlte-input-file name="fotos[]" label="Fotografias" fgroup-class="col-md-6" placeholder="Seleccion las images" accept="image/*" :max-file-size="10" disable-feedback multiple />--}}
-                            {{--                            </div>--}}
-
                             <div class="row">
                                 <x-adminlte-input-file id="fotos" name="fotos[]" label="Subir fotografias"
                                                        fgroup-class="col-md-6" legend="Subir"
@@ -53,7 +50,7 @@
                                     </x-slot>
                                 </x-adminlte-input-file>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Subir</button>
                         </fieldset>
                     </form>
                 </div>
