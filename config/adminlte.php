@@ -350,6 +350,7 @@ return [
             'text' => 'Invitados',
             'url'  => 'invitado',
             'icon' => 'fas fa-fw fa-user',
+            'can' => 'ver-invitado',
         ],
         [
             'text' => 'Fotografos',
